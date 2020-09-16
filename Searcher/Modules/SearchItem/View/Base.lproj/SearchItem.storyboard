@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Item View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="SearchItemViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SearchItemViewController" customModule="Searcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="abL-8r-w32">
+                                <rect key="frame" x="0.0" y="121" width="414" height="741"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="8DP-ka-iD3"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="oBd-bO-xUU"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T3Z-cS-1UX">
+                                <rect key="frame" x="8" y="56" width="398" height="65"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Cod-sJ-kky">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="56"/>
+                                        <subviews>
+                                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Buscar producto..." showsSearchResultsButton="YES" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yr-mt-FqT">
+                                                <rect key="frame" x="0.0" y="0.0" width="398" height="56"/>
+                                                <color key="tintColor" red="0.20030951499999999" green="0.19916266199999999" blue="0.2352989912" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                <scopeButtonTitles>
+                                                    <string>Title</string>
+                                                    <string>Title</string>
+                                                </scopeButtonTitles>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vyR-hl-NLJ"/>
+                                                </connections>
+                                            </searchBar>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWO-c1-dkz">
+                                        <rect key="frame" x="0.0" y="64" width="398" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="DRG-jQ-JU8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="zLE-yJ-Xby">
+                                <rect key="frame" x="135" y="396" width="144.5" height="104.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Ucf-cI-nJQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="60"/>
+                                        <color key="tintColor" red="0.20030951499999999" green="0.19916266199999999" blue="0.2352989912" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="tZj-nF-l8O"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Busca un producto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4t-82-0p0">
+                                        <rect key="frame" x="0.0" y="84" width="144.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="abL-8r-w32" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="4jZ-uQ-gEs"/>
+                            <constraint firstItem="T3Z-cS-1UX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="QTy-TN-g3c"/>
+                            <constraint firstItem="zLE-yJ-Xby" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZUq-u1-m4i"/>
+                            <constraint firstItem="zLE-yJ-Xby" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hHv-HQ-D42"/>
+                            <constraint firstItem="abL-8r-w32" firstAttribute="top" secondItem="T3Z-cS-1UX" secondAttribute="bottom" id="kgk-IZ-RH7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="T3Z-cS-1UX" secondAttribute="leading" constant="-8" id="kmf-L8-Yzm"/>
+                            <constraint firstItem="abL-8r-w32" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tPX-1H-41U"/>
+                            <constraint firstItem="abL-8r-w32" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vaF-lq-Xdf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="T3Z-cS-1UX" secondAttribute="trailing" constant="8" id="zjD-Kp-dw7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="7yr-mt-FqT" id="fPw-yP-RZB"/>
+                        <outlet property="serchPlaceholderStackView" destination="zLE-yJ-Xby" id="ZIB-cr-SDe"/>
+                        <outlet property="tableView" destination="abL-8r-w32" id="Z3X-rT-DVp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Image" width="24" height="24"/>
+    </resources>
+</document>
