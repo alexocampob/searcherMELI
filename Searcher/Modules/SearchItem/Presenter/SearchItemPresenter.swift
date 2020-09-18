@@ -18,18 +18,35 @@ final class SearchItemPresenter: SearchItemPresenterProtocol {
         self.items = items
     }
     
-    func viewDidLoad() {}
-    
     func searchItemsBy(query: String) {
-        view?.showSearchResult()
-        
-        //searchingWorkItem?.cancel()
-        //searchingWorkItem = DispatchWorkItem { [weak self] in
-        self.interactor?.searchItemsBy(query: query)
-        //}
-
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: searchingWorkItem!)
+        searchingWorkItem?.cancel()
+        if query.isEmpty {
+            view?.resetSearchState()
+        } else {
+            searchingWorkItem = DispatchWorkItem { [weak self] in
+                self?.interactor?.searchItemsBy(query: query)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: searchingWorkItem!)
+    }
+    
+    func showProductDetail(with item: Item) {
+        router?.showProductDetail(with: item)
     }
 }
 
-extension SearchItemPresenter: SearchItemInteractorOutputProtocol {}
+extension SearchItemPresenter: SearchItemInteractorOutputProtocol {
+    func onSearchItemFailed(with error: Error) {
+        router?.showErrorAlert()
+        view?.resetSearchState()
+    }
+    
+    func onSearchItemSuccess(with items: [Item]) {
+        if items.isEmpty {
+            view?.showEmptySearchMessage()
+        } else {
+            view?.clearSearchedItems()
+            view?.showSearchResult(with: items)
+        }
+    }
+}

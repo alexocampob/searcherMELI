@@ -15,7 +15,7 @@ final class SearchItemInteractor: SearchItemInteractorProtocol {
     }
     
     func searchItemsBy(query: String) {
-        networkingItemsAdapter.getItemsBy(query: query) { (response) in
+        networkingItemsAdapter.getItemsBy(query: query) { [weak self] (response) in
             switch response {
             case .success(let itemsResponse):
                 let items: [Item] = itemsResponse.results.map { itemResponse in
@@ -24,9 +24,10 @@ final class SearchItemInteractor: SearchItemInteractorProtocol {
                                     price: itemResponse.price)
                     return item
                 }
-                //TODO presenter call
+                self?.presenter?.onSearchItemSuccess(with: items)
                 break
             case .failure(let error):
+                self?.presenter?.onSearchItemFailed(with: error)
                 break
             }
         }

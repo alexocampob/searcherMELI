@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Searcher
+
+  Created by David Alexander Ocampo Barbosa on 17/09/20.
+  Copyright © 2020 David Alexander Ocampo Barbosa. All rights reserved.
+*/
+
+//Search Item Alert
+"searchItemAlert.alertTitle" = "Ocurrió un error al realizar la búsqueda intenta nuevamente";
+"searchItemAlert.alertButtonOk" = "Aceptar";
+
+//Search Item Screen
+"searchItemScreen.defaultSearchText" = "Busca un producto";
+"searchItemScreen.emptySearchText" = "No hay ningún producto que coincida con tu búsqueda, intenta nuevamente";
+"searchItemScreen.currencyMLA" = "$";

@@ -10,13 +10,13 @@ import UIKit
 
 final class SearchItemRouter: SearchItemRouterProtocol {
     
-    weak var viewController: SearchItemViewProtocol?
+    weak var viewController: UIViewController?
     
     /*
      Create and assign all dependencies
      */
-    static func createSearchItemModule(with ref: SearchItemViewProtocol) {
-        //let ref = SearchItemViewController.instantiate(from: .searchItem)
+    static func createSearchItemModule() -> UIViewController {
+        let ref = SearchItemViewController.instantiate(from: .searchItem)
         
         let presenter: SearchItemPresenterProtocol & SearchItemInteractorOutputProtocol = SearchItemPresenter()
         
@@ -31,6 +31,21 @@ final class SearchItemRouter: SearchItemRouterProtocol {
         presenter.interactor = interactor
         
         ref.presenter = presenter
+        return ref
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: Strings.SearchItemAlert.title,
+                                      message: String(),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Strings.SearchItemAlert.titleButtonOk,
+                                      style: .default,
+                                      handler: nil))
+        self.viewController?.present(alert, animated: true)
+    }
+    
+    func showProductDetail(with item: Item) {
+        //TODO
     }
 }
 

@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /*
  Generic type to restrict another type of API
  Session bring apart to make testing easily

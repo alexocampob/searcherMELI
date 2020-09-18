@@ -13,30 +13,20 @@ final class SearchItemViewController: UIViewController, Storyboarded {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var serchPlaceholderStackView: UIStackView!
+    @IBOutlet weak var descriptiveLabel: UILabel!
     
     var presenter: SearchItemPresenterProtocol?
     var searchedItems = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SearchItemRouter.createSearchItemModule(with: self)
-        loadPresenterViewLoad()
+        hideKeyboardWhenTappedAround()
+        tableView.register(UINib(nibName: String(describing: SearchItemCell.self),
+                                 bundle: .main),
+                           forCellReuseIdentifier: String(describing: SearchItemCell.self))
     }
     
-    func loadPresenterViewLoad() {
-        presenter?.viewDidLoad()
-    }
-    
-    func resetSearchState() {
-        hideActivityIndicator()
-        resignFirstResponder()
-        UIView.animate(withDuration: 0.3) {
-            self.tableView.alpha = 0
-            self.serchPlaceholderStackView.alpha = 1
-        }
-    }
-    
-    func showSearchResult() {
+    private func showTableView() {
         hideActivityIndicator()
         UIView.animate(withDuration: 0.3) {
             self.tableView.alpha = 1
@@ -45,7 +35,33 @@ final class SearchItemViewController: UIViewController, Storyboarded {
     }
 }
 
-extension SearchItemViewController: SearchItemViewProtocol {}
+extension SearchItemViewController: SearchItemViewProtocol {
+    func resetSearchState() {
+        descriptiveLabel.text = Strings.SearchItemScreen.defaultSearchText
+        hideActivityIndicator()
+        resignFirstResponder()
+        searchBar.text = String()
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.alpha = 0
+            self.serchPlaceholderStackView.alpha = 1
+        }
+    }
+    
+    func clearSearchedItems() {
+        searchedItems.removeAll()
+        tableView.reloadData()
+    }
+    
+    func showSearchResult(with items: [Item]) {
+        self.searchedItems = items
+        showTableView()
+        self.tableView.reloadData()
+    }
+    
+    func showEmptySearchMessage() {
+        descriptiveLabel.text = Strings.SearchItemScreen.emptySearchText
+    }
+}
 
 
 
