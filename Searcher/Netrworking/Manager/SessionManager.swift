@@ -52,6 +52,7 @@ class SessionManager<EndPoint: EndPointType>: NetworkSession {
             })
             urlRequest.url = newURL?.url
         }
+        NetworkingLogger.log(request: urlRequest)
         
         //Execute the request
         let task = session.dataTask(with: urlRequest) { data, response, error in
@@ -59,9 +60,11 @@ class SessionManager<EndPoint: EndPointType>: NetworkSession {
                 //Completion callback
                 guard let response = response as? HTTPURLResponse,
                     HTTPResponseCodeStatus(code: response.statusCode) == .success else {
+                    Logger.error(error ?? String())
                         completion(nil, nil, ErrorType.serverFailed)
                         return
                 }
+                NetworkingLogger.log(response: response, data: data)
                 completion(data, response, nil)
             }
         }

@@ -10,11 +10,17 @@ import UIKit
 
 extension SearchItemViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return searchedItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SearchItemCell.self),
+                                                 for: indexPath) as? SearchItemCell
+        cell?.setupCell(with: searchedItems[indexPath.row])
+        cell?.onTapped = { [weak self] (item) in
+            self?.presenter?.showProductDetail(with: item)
+        }
+        return cell ?? UITableViewCell()
     }
 }
 
@@ -25,5 +31,9 @@ extension SearchItemViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         resetSearchState()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }

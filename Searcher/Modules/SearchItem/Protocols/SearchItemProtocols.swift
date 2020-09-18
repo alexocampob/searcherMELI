@@ -20,21 +20,27 @@ protocol SearchItemPresenterProtocol: AnyObject {
     var interactor: SearchItemInteractorProtocol? { get set }
     var items: [Item] { get set }
     
-    func viewDidLoad()
     func searchItemsBy(query: String)
+    func showProductDetail(with item: Item)
 }
 
 protocol SearchItemInteractorOutputProtocol: AnyObject {
+    func onSearchItemSuccess(with items: [Item])
+    func onSearchItemFailed(with error: Error)
 }
 
 protocol SearchItemRouterProtocol: AnyObject {
-    var viewController: SearchItemViewProtocol? { get set }
+    var viewController: UIViewController? { get set }
     
-    static func createSearchItemModule(with ref: SearchItemViewProtocol)
+    static func createSearchItemModule() -> UIViewController
+    func showErrorAlert()
+    func showProductDetail(with item: Item)
 }
 
 protocol SearchItemViewProtocol: AnyObject {
     var presenter: SearchItemPresenterProtocol? { get set }
-    func showSearchResult()
+    func showSearchResult(with items: [Item])
     func resetSearchState()
+    func clearSearchedItems()
+    func showEmptySearchMessage()
 }
