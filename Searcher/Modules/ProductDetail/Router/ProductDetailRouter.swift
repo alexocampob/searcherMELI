@@ -12,10 +12,10 @@ final class ProductDetailRouter: ProductDetailRouterProtocol {
     
     weak var viewController: UIViewController?
     
-    static func createProductDetailModule() -> ProductDetailViewController {
+    static func createProductDetailModule(with model: Item) -> ProductDetailViewController {
         let ref = ProductDetailViewController.instantiate(from: .productDetail)
         
-        let presenter: ProductDetailPresenterProtocol & ProductDetailInteractorOutputProtocol = ProductDetailPresenter()
+        let presenter: ProductDetailPresenterProtocol & ProductDetailInteractorOutputProtocol = ProductDetailPresenter(item: model)
         
         let router = ProductDetailRouter()
         router.viewController = ref
@@ -29,6 +29,10 @@ final class ProductDetailRouter: ProductDetailRouterProtocol {
         
         ref.presenter = presenter
         return ref
+    }
+    
+    func popController() {
+        viewController?.navigationController?.popViewController(animated: true)
     }
 }
 
