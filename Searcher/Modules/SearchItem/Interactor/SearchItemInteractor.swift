@@ -21,7 +21,12 @@ final class SearchItemInteractor: SearchItemInteractorProtocol {
                 let items: [Item] = itemsResponse.results.map { itemResponse in
                     let item = Item(thumbnail: itemResponse.thumbnail,
                                     title: itemResponse.title,
-                                    price: itemResponse.price)
+                                    price: itemResponse.price,
+                                    condition: itemResponse.condition.rawValue,
+                                    availableQuantity: itemResponse.availableQuantity,
+                                    numberInstallments: itemResponse.installments.quantity,
+                                    valueInstallment: itemResponse.installments.amount,
+                                    freeShipping: itemResponse.shipping.freeShipping)
                     return item
                 }
                 self?.presenter?.onSearchItemSuccess(with: items)

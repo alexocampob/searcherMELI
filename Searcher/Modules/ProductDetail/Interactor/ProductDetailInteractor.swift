@@ -10,6 +10,5 @@ final class ProductDetailInteractor: ProductDetailInteractorProtocol {
     weak var presenter: ProductDetailInteractorOutputProtocol?
     
     init() {
-        
     }
 }

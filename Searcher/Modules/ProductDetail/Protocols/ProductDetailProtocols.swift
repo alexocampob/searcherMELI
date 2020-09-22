@@ -15,6 +15,9 @@ protocol ProductDetailPresenterProtocol: AnyObject {
     var view: ProductDetailViewProtocol? { get set }
     var router: ProductDetailRouterProtocol? { get set }
     var interactor: ProductDetailInteractorProtocol? { get set }
+    var item: Item { get set }
+    func viewDidLoad()
+    func onBackTapped()
 }
 
 protocol ProductDetailInteractorOutputProtocol: AnyObject {
@@ -22,10 +25,11 @@ protocol ProductDetailInteractorOutputProtocol: AnyObject {
 
 protocol ProductDetailRouterProtocol: AnyObject {
     var viewController: UIViewController? { get set }
-    
-    static func createProductDetailModule() -> ProductDetailViewController
+    static func createProductDetailModule(with model: Item) -> ProductDetailViewController
+    func popController()
 }
 
 protocol ProductDetailViewProtocol: AnyObject {
     var presenter: ProductDetailPresenterProtocol? { get set }
+    func setView(with productDetail: ProductDetail)
 }
