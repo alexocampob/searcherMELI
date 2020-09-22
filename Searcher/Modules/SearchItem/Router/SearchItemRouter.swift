@@ -45,7 +45,9 @@ final class SearchItemRouter: SearchItemRouterProtocol {
     }
     
     func showProductDetail(with item: Item) {
-        //TODO
+        let productDetailController = ProductDetailRouter.createProductDetailModule(with: item)
+        viewController?.navigationController?.pushViewController(productDetailController,
+                                                                 animated: true)
     }
 }
 

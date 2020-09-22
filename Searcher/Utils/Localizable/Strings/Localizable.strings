@@ -14,3 +14,11 @@
 "searchItemScreen.defaultSearchText" = "Busca un producto";
 "searchItemScreen.emptySearchText" = "No hay ningún producto que coincida con tu búsqueda, intenta nuevamente";
 "searchItemScreen.currencyMLA" = "$";
+
+//Product Detail Screen
+"productDetailScreen.availableQuantity" = "Unidades disponibles: %@";
+"productDetailScreen.installmentsDescription" = "%@ cuotas de $ %@";
+"productDetailScreen.freeShipping" = "Envío gratis a nivel nacional";
+"productDetailScreen.payShipping" = "No incluye el envío";
+"productDetailScreen.conditionNew" = "Nuevo";
+"productDetailScreen.conditionUsed" = "Usado";
