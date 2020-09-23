@@ -66,10 +66,10 @@ Este patrón es nativo de iOS, consiste en definir un mecanismo en el que un obj
 Singleton asegura una única instancia para cada clase y provee un punto de acceso global a esta, **UIApplication.shared o UIScreen.main** son ejemplos muy sencillos de la implementación de este patrón. VIPER implementa dicho patrón al proveer una unica instancia de cada clase (view, presenter, interactor, router) dentro de cada módulo.
 
 **Decorator**
-El patrón Decorator agrega dinámicamente comportamientos y responsabilidades a un objeto sin modificar su código. En iOS se conocen como Extensions y son muy útiles a la hora de definir algún comportamiento común.
+El patrón Decorator agrega dinámicamente comportamientos y responsabilidades a un objeto sin modificar su código. En iOS se conocen como Extensions y son muy útiles a la hora de agregar algún comportamiento extra de uso común.
 
 **Observer**
-Define un mecanismo de suscripción para notificar a varios objetos sobre cualquier evento que le suceda al objeto que están observando. En iOS se conocen como closures, generalmente se usan para tareas y bloques de código asíncronos, las funciones de Notification también son un ejemplo común del patrón observer. 
+Define un mecanismo de suscripción para notificar a varios objetos sobre cualquier evento que le suceda al objeto que están observando. En iOS se pueden implementar a través de closures, generalmente se usan para tareas y bloques de código asíncronos, las funciones de Notification también son un ejemplo común del patrón observer. 
 
 **Chain of responsibility**
 Permite pasar solicitudes a lo largo de una cadena de manejadores. Al recibir una solicitud, cada manejador decide si la procesa o si la pasa al siguiente manejador de la cadena. VIPER aplica el patrón al pasar diferentes tipos de solicitudes entre sus capas internas hasta que una capa decide procesarla.
