@@ -5,7 +5,7 @@ Buscador de productos
 
 ### Visión general
 
-**VIPER** es un acrónimo de **View, Interactor, Presenter, Entity y Router.** Esta arquitectura está basada en principios de responsabilidad única, que guía hacia una arquitectura más limpia, dando como resultado un proyecto mantenible, escalable y fácil de comprender.
+**VIPER** es un acrónimo de **View, Interactor, Presenter, Entity y Router.** Esta arquitectura está basada en principios de responsabilidad única, que guía hacia un código más limpio, dando como resultado un proyecto mantenible, escalable y fácil de comprender.
 
 **View.**  la responsabilidad de la vista es de enviar las acciones del usuario al presentar y enseñar lo que le dice el **Presenter.**
 
