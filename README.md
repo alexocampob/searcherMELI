@@ -56,6 +56,11 @@ Items --> ADAPTER
 **UseCases:** 
 - En los **usecases** se definen los modelos de los request que solicita un endpoint y los responses que ese mismo endpoint devuelva cuando sea llamado.
 
+### GUIDELINES
+
+Dentro del proyecto se aplicaron algunas características específicas sugeridas por Apple que se deben tener en cuenta a la hora de hacer una pantalla de búsqueda:
+https://developer.apple.com/design/human-interface-guidelines/ios/bars/search-bars/
+
 
 ### PATRONES DE DISEÑO
 
