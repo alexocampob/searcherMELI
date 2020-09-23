@@ -8,9 +8,13 @@
 
 import UIKit
 
+/**
+ herencia de AnyObject para que solo clases puedan implementar este protocolo
+ (estructuras o enumeraciones no)
+ */
 protocol SearchItemInteractorProtocol: AnyObject {
     var presenter: SearchItemInteractorOutputProtocol? { get set }
-    var networkingItemsAdapter: NetworkingItemsAdapterProtocol { get set }
+    var networkingItemsAdapter: NetworkingItemsAdapterProtocol? { get set }
     func searchItemsBy(query: String)
 }
 

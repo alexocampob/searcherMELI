@@ -8,14 +8,14 @@
 
 final class SearchItemInteractor: SearchItemInteractorProtocol {
     weak var presenter: SearchItemInteractorOutputProtocol?
-    var networkingItemsAdapter: NetworkingItemsAdapterProtocol
+    var networkingItemsAdapter: NetworkingItemsAdapterProtocol?
     
     init(networkingItemsAdapter: NetworkingItemsAdapterProtocol = NetworkingItemsAdapter()) {
         self.networkingItemsAdapter = networkingItemsAdapter
     }
     
     func searchItemsBy(query: String) {
-        networkingItemsAdapter.getItemsBy(query: query) { [weak self] (response) in
+        networkingItemsAdapter?.getItemsBy(query: query) { [weak self] (response) in
             switch response {
             case .success(let itemsResponse):
                 let items: [Item] = itemsResponse.results.map { itemResponse in
@@ -30,12 +30,9 @@ final class SearchItemInteractor: SearchItemInteractorProtocol {
                     return item
                 }
                 self?.presenter?.onSearchItemSuccess(with: items)
-                break
             case .failure(let error):
                 self?.presenter?.onSearchItemFailed(with: error)
-                break
             }
         }
     }
-       
 }
