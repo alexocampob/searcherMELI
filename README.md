@@ -58,7 +58,6 @@ Items --> ADAPTER
 
 
 ### PATRONES DE DISEÑO
-El proyecto implementa algunos patrones de diseño por defecto que iOS provee por defecto:
 
 **Delegation**
 Este patrón es nativo de iOS, consiste en definir un mecanismo en el que un objeto actúa en nombre de otro o en coordinación con él. **UITableViewDelegate** Es el ejemplo más conocido de delegation que provee por defecto iOS.
